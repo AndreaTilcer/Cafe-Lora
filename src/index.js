@@ -1,5 +1,5 @@
 import './style.css';
-import { CoffeeItems } from './Layer/index.js';
+import { Drink } from './Drink/index.js';
 
 console.log('funguju!');
 
@@ -17,6 +17,7 @@ for (let i = 0; i < zabalMenu.length; i += 1) {
 
 let ordered = false;
 
+/*
 const objednatBtn = document.querySelector('.order-btn');
 objednatBtn.addEventListener('click', () => {
   if (ordered === false) {
@@ -33,23 +34,28 @@ objednatBtn.addEventListener('click', () => {
     console.log(ordered);
   }
 });
+*/
 
-const coffees = [
+const drinks = [
   {
-    color: '#feeeca',
-    label: 'mléčná pěna',
-  },
-  {
-    color: 'fed7b0',
-    label: 'teplé mléko',
-  },
-  {
-    color: '#613916',
-    label: 'espresso',
+    id: 'romano',
+    name: 'Romano',
+    ordered: false,
+    layers: [
+      {
+        color: '#fbdf5b',
+        label: 'citrón',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+    image: 'https://apps.kodim.cz/daweb/cafelora/assets/cups/romano.png',
   },
 ];
 
-const coffeeElm = document.querySelector('.drink__info');
-for (let i = 0; i < coffees.length; i += 1) {
-  coffeeElm.innerHTML += CoffeeItems(coffees[i]);
+const coffeeElm = document.querySelector('.drinks-list');
+for (let i = 0; i < drinks.length; i += 1) {
+  coffeeElm.appendChild(Drink(drinks[i]));
 }

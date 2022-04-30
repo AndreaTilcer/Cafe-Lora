@@ -1,4 +1,4 @@
-export const CoffeeItems = (props) => {
+export const Layer = (props) => {
   const { color, label } = props;
 
   return `
