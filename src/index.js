@@ -1,4 +1,5 @@
 import './style.css';
+import { CoffeeItems } from './Layer/index.js';
 
 console.log('funguju!');
 
@@ -32,3 +33,23 @@ objednatBtn.addEventListener('click', () => {
     console.log(ordered);
   }
 });
+
+const coffees = [
+  {
+    color: '#feeeca',
+    label: 'mléčná pěna',
+  },
+  {
+    color: 'fed7b0',
+    label: 'teplé mléko',
+  },
+  {
+    color: '#613916',
+    label: 'espresso',
+  },
+];
+
+const coffeeElm = document.querySelector('.drink__info');
+for (let i = 0; i < coffees.length; i += 1) {
+  coffeeElm.innerHTML += CoffeeItems(coffees[i]);
+}
