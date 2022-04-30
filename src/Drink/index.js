@@ -1,7 +1,26 @@
 import { Layer } from '../Layer/index.js';
 
+const drinks = [
+  {
+    id: 'romano',
+    name: 'Romano',
+    ordered: false,
+    layers: [
+      {
+        color: '#fbdf5b',
+        label: 'citrón',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+    image: 'https://apps.kodim.cz/daweb/cafelora/assets/cups/romano.png',
+  },
+];
+
 export const Drink = (props) => {
-  const { name, layers, image } = props;
+  let { ordered, name, layers, image } = props;
 
   const drinkDiv = document.createElement('div');
   drinkDiv.classList.add('drink');
@@ -24,6 +43,26 @@ export const Drink = (props) => {
   for (let i = 0; i < layers.length; i += 1) {
     drinkInfo.innerHTML += Layer(layers[i]);
   }
+
+  const objednatBtn = drinkDiv.querySelector('.order-btn');
+  objednatBtn.addEventListener('click', () => {
+    if (ordered === false) {
+      objednatBtn.textContent = 'Zrušit';
+      drinkDiv
+        .querySelector('.drink__cup')
+        .classList.add('drink__cup--selected');
+      ordered = true;
+      console.log(ordered);
+    } else {
+      objednatBtn.textContent = 'Objednat';
+      drinkDiv
+        .querySelector('.drink__cup')
+        .classList.remove('drink__cup--selected');
+      ordered = false;
+      console.log(ordered);
+    }
+  });
+
   return drinkDiv;
 };
 
@@ -39,24 +78,5 @@ const layers = [
   {
     color: '#613916',
     label: 'espresso',
-  },
-];
-
-const drinks = [
-  {
-    id: 'romano',
-    name: 'Romano',
-    ordered: false,
-    layers: [
-      {
-        color: '#fbdf5b',
-        label: 'citrón',
-      },
-      {
-        color: '#613916',
-        label: 'espresso',
-      },
-    ],
-    image: 'https://apps.kodim.cz/daweb/cafelora/assets/cups/romano.png',
   },
 ];
