@@ -1,23 +1,6 @@
-import { Layer } from '../Layer/index.js';
+import './style.css';
 
-const drinks = [
-  {
-    id: 'romano',
-    name: 'Romano',
-    ordered: false,
-    layers: [
-      {
-        color: '#fbdf5b',
-        label: 'citrón',
-      },
-      {
-        color: '#613916',
-        label: 'espresso',
-      },
-    ],
-    image: 'https://apps.kodim.cz/daweb/cafelora/assets/cups/romano.png',
-  },
-];
+import { Layer } from '../Layer/index.js';
 
 export const Drink = (props) => {
   let { ordered, name, layers, image } = props;

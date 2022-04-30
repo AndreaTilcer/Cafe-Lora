@@ -15,8 +15,6 @@ for (let i = 0; i < zabalMenu.length; i += 1) {
   });
 }
 
-let ordered = false;
-
 /*
 const objednatBtn = document.querySelector('.order-btn');
 objednatBtn.addEventListener('click', () => {
@@ -34,9 +32,29 @@ objednatBtn.addEventListener('click', () => {
     console.log(ordered);
   }
 });
-*/
+
 
 const drinks = [
+  {
+    id: 'cappuccino',
+    name: 'Cappuccino',
+    ordered: false,
+    layers: [
+      {
+        color: '#feeeca',
+        label: 'mléčná pěna',
+      },
+      {
+        color: '#fed7b0',
+        label: 'teplé mléko',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+    image: 'https://apps.kodim.cz/daweb/cafelora/assets/cups/cappuccino.png',
+  },
   {
     id: 'romano',
     name: 'Romano',
@@ -54,8 +72,16 @@ const drinks = [
     image: 'https://apps.kodim.cz/daweb/cafelora/assets/cups/romano.png',
   },
 ];
+*/
 
-const coffeeElm = document.querySelector('.drinks-list');
-for (let i = 0; i < drinks.length; i += 1) {
-  coffeeElm.appendChild(Drink(drinks[i]));
-}
+fetch('https://apps.kodim.cz/daweb/cafelora/api/drinks')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    const drinks = data.results;
+    const coffeeElm = document.querySelector('.drinks-list');
+    for (let i = 0; i < drinks.length; i += 1) {
+      coffeeElm.appendChild(Drink(drinks[i]));
+    }
+  });
