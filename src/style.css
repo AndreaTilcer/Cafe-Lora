@@ -246,6 +246,11 @@ nav a:hover {
   background-attachment: fixed;
 }
 
+.gallery-styly {
+  text-shadow: 1px 1px #363232;
+  backdrop-filter: blur(10px);
+}
+
 .contacts {
   margin-bottom: 4rem;
 
